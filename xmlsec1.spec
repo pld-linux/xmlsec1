@@ -193,6 +193,15 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
+%post	gnutls -p /sbin/ldconfig
+%postun	gnutls -p /sbin/ldconfig
+
+%post	nss -p /sbin/ldconfig
+%postun	nss -p /sbin/ldconfig
+
+%post	openssl -p /sbin/ldconfig
+%postun	openssl -p /sbin/ldconfig
+
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog Copyright README TODO
