@@ -42,7 +42,7 @@ bezpieczeñstwa XML:
    http://www.w3.org/TR/xmldsig-core/
  - XML Encryption Syntax and Processing (sk³adnia i przetwarzanie
    szyfrowania XML)
-XMLSec jest oparta na dobrze znanych bibliotekach LibXML
+XMLSec jest opart± na dobrze znanych bibliotekach LibXML
 (http://xmlsoft.org/), LibXSLT (http://xmlsoft.org/XSLT/) oraz OpenSSL
 (http://www.openssl.org/).
 
@@ -85,7 +85,7 @@ GnuTLS plugin for XML Security Library provides GnuTLS based crypto
 services for the XMLSec library.
 
 %description gnutls -l pl
-Wtyczka GnuTLS dla biblioteki XMLSec dostarzcza us³ugi kryptograficzne
+Wtyczka GnuTLS dla biblioteki XMLSec dostarcza us³ugi kryptograficzne
 oparte na bibliotece GnuTLS.
 
 %package gnutls-devel
@@ -116,7 +116,7 @@ NSS plugin for XML Security Library provides NSS based crypto services
 for the XMLSec library.
 
 %description nss -l pl
-Wtyczka NSS dla biblioteki XMLSec dostarzcza us³ugi kryptograficzne
+Wtyczka NSS dla biblioteki XMLSec dostarcza us³ugi kryptograficzne
 oparte na bibliotece NSS.
 
 %package nss-devel
@@ -147,7 +147,7 @@ OpenSSL plugin for XML Security Library provides OpenSSL based crypto
 services for the XMLSec library.
 
 %description openssl -l pl
-Wtyczka OpenSSL dla biblioteki XMLSec dostarzcza us³ugi
+Wtyczka OpenSSL dla biblioteki XMLSec dostarcza us³ugi
 kryptograficzne oparte na bibliotece OpenSSL.
 
 %package openssl-devel
