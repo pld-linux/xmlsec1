@@ -41,8 +41,8 @@ bezpieczeñstwa XML:
    sygnatur XML)
    http://www.w3.org/TR/xmldsig-core/
  - XML Encryption Syntax and Processing (sk³adnia i przetwarzanie
-   szyfrowania XML)
-XMLSec jest opart± na dobrze znanych bibliotekach LibXML
+   szyfrowania XML).
+XMLSec jest oparta na dobrze znanych bibliotekach LibXML
 (http://xmlsoft.org/), LibXSLT (http://xmlsoft.org/XSLT/) oraz OpenSSL
 (http://www.openssl.org/).
 
