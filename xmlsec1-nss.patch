@@ -1,0 +1,58 @@
+--- xmlsec1-1.2.6/configure.in.orig	2004-08-26 04:49:24.000000000 +0200
++++ xmlsec1-1.2.6/configure.in	2004-10-31 00:56:57.447586088 +0200
+@@ -545,7 +545,7 @@
+ 
+     if test "z$with_nspr" != "z" ; then
+ 	NSPR_PREFIX="$with_nspr"
+-	NSPR_CFLAGS="-I$with_nspr/include"
++	NSPR_CFLAGS="-I$with_nspr/include/nspr"
+ 	if test "z$with_gnu_ld" = "zyes" ; then
+ 	    NSPR_LIBS="-Wl,-rpath-link -Wl,$with_nspr/lib -L$with_nspr/lib $NSPR_LIBS_LIST"
+ 	else
+@@ -553,16 +553,11 @@
+ 	fi
+ 	NSPR_INCLUDES_FOUND="yes"
+ 	NSPR_LIBS_FOUND="yes"
+-	NSPR_PRINIT_H="$with_nspr/include/prinit.h"
++	NSPR_PRINIT_H="$with_nspr/include/nspr/prinit.h"
+     else
+ 	for dir in $ac_nss_inc_dir ; do
+     	    if test -f $dir/nspr/prinit.h ; then
+-    		dnl do not add -I/usr/include because compiler does it anyway
+-        	if test "z$dir" = "z/usr/include" ; then
+-    		    NSPR_CFLAGS=""
+-    		else
+-    		    NSPR_CFLAGS="-I$dir/nspr"
+-    		fi
++    		NSPR_CFLAGS="-I$dir/nspr"
+ 		NSPR_INCLUDES_FOUND="yes"
+ 		NSPR_PRINIT_H="$dir/nspr/prinit.h"
+     		break
+@@ -616,7 +611,7 @@
+     NSS_NSS_H=""
+ 
+     if test "z$with_nss" != "z" ; then
+-	NSS_CFLAGS="$NSS_CFLAGS -I$with_nss/include"
++	NSS_CFLAGS="$NSS_CFLAGS -I$with_nss/include/nss"
+ 	if test "z$with_gnu_ld" = "zyes" ; then
+ 	    NSS_LIBS="$NSS_LIBS -Wl,-rpath-link -Wl,$with_nss/lib -L$with_nss/lib $NSS_LIBS_LIST"
+         else
+@@ -624,16 +619,11 @@
+         fi
+ 	NSS_INCLUDES_FOUND="yes"
+ 	NSS_LIBS_FOUND="yes"
+-	NSS_NSS_H="$with_nss/include/nss.h"
++	NSS_NSS_H="$with_nss/include/nss/nss.h"
+     else
+ 	for dir in $ac_nss_inc_dir ; do
+ 	    if test -f $dir/nss/nss.h ; then
+-        	dnl do not add -I/usr/include because compiler does it anyway
+-    		if test "z$dir" = "z/usr/include" ; then
+-        	    NSS_CFLAGS="$NSS_CFLAGS"
+-		else
+-            	    NSS_CFLAGS="$NSS_CFLAGS -I$dir/nss"
+-		fi
++            	NSS_CFLAGS="$NSS_CFLAGS -I$dir/nss"
+     		NSS_INCLUDES_FOUND="yes"
+     		NSS_NSS_H="$dir/nss/nss.h"
+     		break
