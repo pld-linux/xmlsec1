@@ -1,25 +1,25 @@
 Summary:	XML Security Library
 Summary(pl):	Biblioteka bezpieczeñstwa XML
 Name:		xmlsec1
-Version:	1.2.6
+Version:	1.2.7
 Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
-# Source0-md5:	deaa3d257320d45516fc9a99263fced0
+# Source0-md5:	0c8676629f3f33fd77e0e6e21a0b6ecb
 Patch0:		%{name}-nss.patch
 URL:		http://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.2
 BuildRequires:	automake
 BuildRequires:	gnutls-devel >= 1.0.0
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel >= 1:2.6.2
+BuildRequires:	libxml2-devel >= 1:2.6.12
 BuildRequires:	libxslt-devel >= 1.0.20
 BuildRequires:	nspr-devel >= 4.0
 BuildRequires:	nss-devel >= 3.2
 BuildRequires:	openssl-devel >= 0.9.7
 BuildRequires:	pkgconfig
-Requires:	libxml2 >= 1:2.6.2
+Requires:	libxml2 >= 1:2.6.12
 Requires:	libxslt >= 1.0.20
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -52,7 +52,7 @@ Summary(pl):	Pliki nag³ówkowe biblioteki XMLSec
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk-doc-common
-Requires:	libxml2-devel >= 1:2.6.2
+Requires:	libxml2-devel >= 1:2.6.12
 Requires:	libxslt-devel >= 1.0.20
 
 %description devel
