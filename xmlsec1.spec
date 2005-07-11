@@ -2,7 +2,7 @@ Summary:	XML Security Library
 Summary(pl):	Biblioteka bezpieczeñstwa XML
 Name:		xmlsec1
 Version:	1.2.8
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 Source0:	http://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
@@ -11,7 +11,7 @@ Patch0:		%{name}-nss.patch
 URL:		http://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.2
 BuildRequires:	automake
-BuildRequires:	gnutls-devel >= 1.0.0
+BuildRequires:	gnutls-devel >= 1.2.5
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.6.12
 BuildRequires:	libxslt-devel >= 1.0.20
