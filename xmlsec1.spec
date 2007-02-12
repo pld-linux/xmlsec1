@@ -1,5 +1,5 @@
 Summary:	XML Security Library
-Summary(pl.UTF-8):   Biblioteka bezpieczeństwa XML
+Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
 Version:	1.2.10
 Release:	2
@@ -48,7 +48,7 @@ XMLSec jest oparta na dobrze znanych bibliotekach LibXML
 
 %package devel
 Summary:	Header files for XMLSec library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki XMLSec
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki XMLSec
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk-doc-common
@@ -63,7 +63,7 @@ Pliki nagłówkowe biblioteki XMLSec.
 
 %package static
 Summary:	Static XMLSec library
-Summary(pl.UTF-8):   Statyczna biblioteka XMLSec
+Summary(pl.UTF-8):	Statyczna biblioteka XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -75,7 +75,7 @@ Statyczna biblioteka XMLSec.
 
 %package gnutls
 Summary:	GnuTLS crypto plugin for XML Security Library
-Summary(pl.UTF-8):   Wtyczka kryptograficzna GnuTLS dla biblioteki XMLSec
+Summary(pl.UTF-8):	Wtyczka kryptograficzna GnuTLS dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gnutls >= 1.0.0
@@ -90,7 +90,7 @@ oparte na bibliotece GnuTLS.
 
 %package gnutls-devel
 Summary:	Header files for XMLSec GnuTLS API
-Summary(pl.UTF-8):   Pliki nagłówkowe API GnuTLS XMLSec
+Summary(pl.UTF-8):	Pliki nagłówkowe API GnuTLS XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-gnutls = %{version}-%{release}
@@ -105,7 +105,7 @@ XML przy użyciu GnuTLS.
 
 %package nss
 Summary:	NSS crypto plugin for XML Security Library
-Summary(pl.UTF-8):   Wtyczka kryptograficzna NSS dla biblioteki XMLSec
+Summary(pl.UTF-8):	Wtyczka kryptograficzna NSS dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	nspr >= 4.0
@@ -121,7 +121,7 @@ oparte na bibliotece NSS.
 
 %package nss-devel
 Summary:	Header files for XMLSec NSS API
-Summary(pl.UTF-8):   Pliki nagłówkowe API NSS XMLSec
+Summary(pl.UTF-8):	Pliki nagłówkowe API NSS XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-nss = %{version}-%{release}
@@ -137,7 +137,7 @@ XML przy użyciu NSS.
 
 %package openssl
 Summary:	OpenSSL crypto plugin for XML Security Library
-Summary(pl.UTF-8):   Wtyczka kryptograficzna OpenSSL dla biblioteki XMLSec
+Summary(pl.UTF-8):	Wtyczka kryptograficzna OpenSSL dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	openssl >= 0.9.7
@@ -152,7 +152,7 @@ kryptograficzne oparte na bibliotece OpenSSL.
 
 %package openssl-devel
 Summary:	Header files for XMLSec OpenSSL API
-Summary(pl.UTF-8):   Pliki nagłówkowe API OpenSSL XMLSec
+Summary(pl.UTF-8):	Pliki nagłówkowe API OpenSSL XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-openssl = %{version}-%{release}
