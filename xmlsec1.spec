@@ -1,5 +1,5 @@
 Summary:	XML Security Library
-Summary(pl):	Biblioteka bezpieczeÒstwa XML
+Summary(pl.UTF-8):   Biblioteka bezpiecze≈Ñstwa XML
 Name:		xmlsec1
 Version:	1.2.10
 Release:	2
@@ -34,13 +34,13 @@ XMLSec is based on well known LibXML (http://xmlsoft.org/), LibXSLT
 (http://xmlsoft.org/XSLT/) and OpenSSL (http://www.openssl.org/)
 libraries.
 
-%description -l pl
-Biblioteka XMLSec dostarcza implementacjÍ w C g≥Ûwnych standardÛw
-bezpieczeÒstwa XML:
- - XML Signature Syntax and Processing (sk≥adnia i przetwarzanie
+%description -l pl.UTF-8
+Biblioteka XMLSec dostarcza implementacjƒô w C g≈Ç√≥wnych standard√≥w
+bezpiecze≈Ñstwa XML:
+ - XML Signature Syntax and Processing (sk≈Çadnia i przetwarzanie
    sygnatur XML)
    http://www.w3.org/TR/xmldsig-core/
- - XML Encryption Syntax and Processing (sk≥adnia i przetwarzanie
+ - XML Encryption Syntax and Processing (sk≈Çadnia i przetwarzanie
    szyfrowania XML).
 XMLSec jest oparta na dobrze znanych bibliotekach LibXML
 (http://xmlsoft.org/), LibXSLT (http://xmlsoft.org/XSLT/) oraz OpenSSL
@@ -48,7 +48,7 @@ XMLSec jest oparta na dobrze znanych bibliotekach LibXML
 
 %package devel
 Summary:	Header files for XMLSec library
-Summary(pl):	Pliki nag≥Ûwkowe biblioteki XMLSec
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe biblioteki XMLSec
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gtk-doc-common
@@ -58,24 +58,24 @@ Requires:	libxslt-devel >= 1.0.20
 %description devel
 Header files for XMLSec library.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe biblioteki XMLSec.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe biblioteki XMLSec.
 
 %package static
 Summary:	Static XMLSec library
-Summary(pl):	Statyczna biblioteka XMLSec
+Summary(pl.UTF-8):   Statyczna biblioteka XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static XMLSec library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka XMLSec.
 
 %package gnutls
 Summary:	GnuTLS crypto plugin for XML Security Library
-Summary(pl):	Wtyczka kryptograficzna GnuTLS dla biblioteki XMLSec
+Summary(pl.UTF-8):   Wtyczka kryptograficzna GnuTLS dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gnutls >= 1.0.0
@@ -84,13 +84,13 @@ Requires:	gnutls >= 1.0.0
 GnuTLS plugin for XML Security Library provides GnuTLS based crypto
 services for the XMLSec library.
 
-%description gnutls -l pl
-Wtyczka GnuTLS dla biblioteki XMLSec dostarcza us≥ugi kryptograficzne
+%description gnutls -l pl.UTF-8
+Wtyczka GnuTLS dla biblioteki XMLSec dostarcza us≈Çugi kryptograficzne
 oparte na bibliotece GnuTLS.
 
 %package gnutls-devel
 Summary:	Header files for XMLSec GnuTLS API
-Summary(pl):	Pliki nag≥Ûwkowe API GnuTLS XMLSec
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe API GnuTLS XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-gnutls = %{version}-%{release}
@@ -99,13 +99,13 @@ Requires:	gnutls-devel >= 1.0.0
 %description gnutls-devel
 Header files for developing XML Security applications with GnuTLS.
 
-%description gnutls-devel -l pl
-Pliki nag≥Ûwkowe do tworzenia aplikacji zwi±zanych z bezpieczeÒstwem
-XML przy uøyciu GnuTLS.
+%description gnutls-devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe do tworzenia aplikacji zwiƒÖzanych z bezpiecze≈Ñstwem
+XML przy u≈ºyciu GnuTLS.
 
 %package nss
 Summary:	NSS crypto plugin for XML Security Library
-Summary(pl):	Wtyczka kryptograficzna NSS dla biblioteki XMLSec
+Summary(pl.UTF-8):   Wtyczka kryptograficzna NSS dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	nspr >= 4.0
@@ -115,13 +115,13 @@ Requires:	nss >= 3.2
 NSS plugin for XML Security Library provides NSS based crypto services
 for the XMLSec library.
 
-%description nss -l pl
-Wtyczka NSS dla biblioteki XMLSec dostarcza us≥ugi kryptograficzne
+%description nss -l pl.UTF-8
+Wtyczka NSS dla biblioteki XMLSec dostarcza us≈Çugi kryptograficzne
 oparte na bibliotece NSS.
 
 %package nss-devel
 Summary:	Header files for XMLSec NSS API
-Summary(pl):	Pliki nag≥Ûwkowe API NSS XMLSec
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe API NSS XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-nss = %{version}-%{release}
@@ -131,13 +131,13 @@ Requires:	nss-devel >= 3.2
 %description nss-devel
 Header files for developing XML Security applications with NSS.
 
-%description nss-devel -l pl
-Pliki nag≥Ûwkowe do tworzenia aplikacji zwi±zanych z bezpieczeÒstwem
-XML przy uøyciu NSS.
+%description nss-devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe do tworzenia aplikacji zwiƒÖzanych z bezpiecze≈Ñstwem
+XML przy u≈ºyciu NSS.
 
 %package openssl
 Summary:	OpenSSL crypto plugin for XML Security Library
-Summary(pl):	Wtyczka kryptograficzna OpenSSL dla biblioteki XMLSec
+Summary(pl.UTF-8):   Wtyczka kryptograficzna OpenSSL dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	openssl >= 0.9.7
@@ -146,13 +146,13 @@ Requires:	openssl >= 0.9.7
 OpenSSL plugin for XML Security Library provides OpenSSL based crypto
 services for the XMLSec library.
 
-%description openssl -l pl
-Wtyczka OpenSSL dla biblioteki XMLSec dostarcza us≥ugi
+%description openssl -l pl.UTF-8
+Wtyczka OpenSSL dla biblioteki XMLSec dostarcza us≈Çugi
 kryptograficzne oparte na bibliotece OpenSSL.
 
 %package openssl-devel
 Summary:	Header files for XMLSec OpenSSL API
-Summary(pl):	Pliki nag≥Ûwkowe API OpenSSL XMLSec
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe API OpenSSL XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-openssl = %{version}-%{release}
@@ -161,9 +161,9 @@ Requires:	openssl-devel >= 0.9.7
 %description openssl-devel
 Header files for developing XML Security applications with OpenSSL.
 
-%description openssl-devel -l pl
-Pliki nag≥Ûwkowe do tworzenia aplikacji zwi±zanych z bezpieczeÒstwem
-XML przy uøyciu OpenSSL.
+%description openssl-devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe do tworzenia aplikacji zwiƒÖzanych z bezpiecze≈Ñstwem
+XML przy u≈ºyciu OpenSSL.
 
 %prep
 %setup -q
