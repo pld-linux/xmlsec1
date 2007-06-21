@@ -2,7 +2,7 @@ Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
 Version:	1.2.10
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries
 Source0:	http://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
@@ -51,7 +51,6 @@ Summary:	Header files for XMLSec library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki XMLSec
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gtk-doc-common
 Requires:	libxml2-devel >= 1:2.6.12
 Requires:	libxslt-devel >= 1.0.20
 
@@ -72,6 +71,18 @@ Static XMLSec library.
 
 %description static -l pl.UTF-8
 Statyczna biblioteka XMLSec.
+
+%package apidocs
+Summary:	XMLSec library API documentation
+Summary(pl.UTF-8):	Dokumentacja API biblioteki XMLSec
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+XMLSec library API documentation.
+
+%description apidocs -l pl.UTF-8
+Dokumentacja API biblioteki XMLSec.
 
 %package gnutls
 Summary:	GnuTLS crypto plugin for XML Security Library
@@ -225,11 +236,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/xmlsec1/xmlsec/private
 %{_pkgconfigdir}/xmlsec1.pc
 %{_mandir}/man1/xmlsec1-config.1*
-%{_gtkdocdir}/xmlsec1
 
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1.a
+
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/xmlsec1
 
 %files gnutls
 %defattr(644,root,root,755)
