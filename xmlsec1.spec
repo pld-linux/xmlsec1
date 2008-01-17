@@ -2,7 +2,7 @@ Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
 Version:	1.2.11
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 Source0:	http://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
@@ -27,11 +27,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 XMLSec library provides C based implementation for major XML Security
 standards:
  - XML Signature Syntax and Processing
-   http://www.w3.org/TR/xmldsig-core/
+   <http://www.w3.org/TR/xmldsig-core/>
  - XML Encryption Syntax and Processing
-   http://www.w3.org/TR/xmlenc-core/
-XMLSec is based on well known LibXML (http://xmlsoft.org/), LibXSLT
-(http://xmlsoft.org/XSLT/) and OpenSSL (http://www.openssl.org/)
+   <http://www.w3.org/TR/xmlenc-core/>
+XMLSec is based on well known LibXML <http://xmlsoft.org/>, LibXSLT
+<http://xmlsoft.org/XSLT/> and OpenSSL <http://www.openssl.org/>
 libraries.
 
 %description -l pl.UTF-8
@@ -39,12 +39,12 @@ Biblioteka XMLSec dostarcza implementację w C głównych standardów
 bezpieczeństwa XML:
  - XML Signature Syntax and Processing (składnia i przetwarzanie
    sygnatur XML)
-   http://www.w3.org/TR/xmldsig-core/
+   <http://www.w3.org/TR/xmldsig-core/>
  - XML Encryption Syntax and Processing (składnia i przetwarzanie
    szyfrowania XML).
 XMLSec jest oparta na dobrze znanych bibliotekach LibXML
-(http://xmlsoft.org/), LibXSLT (http://xmlsoft.org/XSLT/) oraz OpenSSL
-(http://www.openssl.org/).
+<http://xmlsoft.org/>, LibXSLT <http://xmlsoft.org/XSLT/> oraz OpenSSL
+<http://www.openssl.org/>.
 
 %package devel
 Summary:	Header files for XMLSec library
