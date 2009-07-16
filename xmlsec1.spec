@@ -1,12 +1,12 @@
 Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
-Version:	1.2.11
-Release:	3
+Version:	1.2.12
+Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
-# Source0-md5:	5652d44eec1375a399a6c61f5f6091f1
+# Source0-md5:	195d042623bcc2e1668ab8370de6dc2a
 Patch0:		%{name}-nss.patch
 URL:		http://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.2
@@ -190,6 +190,7 @@ echo 'm4_pattern_allow(PKG_CONFIG_ENABLED)' > acinclude.m4
 %{__autoheader}
 %{__automake}
 %configure \
+	CPPFLAGS='%{rpmcppflags} -DLTDL_OBJDIR=\".libs\" -DLTDL_SHLIB_EXT=\".so\"' \
 	--with-html-dir=%{_gtkdocdir}/xmlsec1 \
 	--with-nspr=/usr \
 	--with-nss=/usr
