@@ -38,3 +38,14 @@
      		NSS_INCLUDES_FOUND="yes"
      		NSS_NSS_H="$dir/nss/nss.h"
      		break
+--- xmlsec1-1.2.14/configure.in~	2010-04-26 09:58:24.901946082 +0200
++++ xmlsec1-1.2.14/configure.in	2010-04-26 10:01:17.278214712 +0200
+@@ -689,7 +689,7 @@
+     NSS_NSS_H=""
+ 
+     if test "z$with_nss" != "z" ; then
+-	NSS_CFLAGS="$NSS_CFLAGS -I$with_nss/include -I$with_nss/include/nss"
++	NSS_CFLAGS="$NSS_CFLAGS -I$with_nss/include -I$with_nss/include/nss -I/usr/include/nspr"
+ 	if test "z$with_gnu_ld" = "zyes" ; then
+ 	    NSS_LIBS="$NSS_LIBS -Wl,-rpath-link -Wl,$with_nss/lib -L$with_nss/lib $NSS_LIBS_LIST"
+         else
