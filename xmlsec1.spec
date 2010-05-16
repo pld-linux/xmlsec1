@@ -12,6 +12,7 @@ URL:		http://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.2
 BuildRequires:	automake
 BuildRequires:	gnutls-devel >= 1.2.5
+BuildRequires:	libltdl-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel >= 1:2.7.4
 BuildRequires:	libxslt-devel >= 1.0.20
