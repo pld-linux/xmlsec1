@@ -1,25 +1,26 @@
 Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
-Version:	1.2.15
+Version:	1.2.16
 Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
-# Source0-md5:	43bc8011a33ef9fba862eca4573034c4
+# Source0-md5:	17e8eb9a4ec4139b7689d139be4da133
 Patch0:		%{name}-nss.patch
 URL:		http://www.aleksey.com/xmlsec/
-BuildRequires:	autoconf >= 2.2
-BuildRequires:	automake
-BuildRequires:	gnutls-devel >= 1.2.5
+BuildRequires:	autoconf >= 2.53
+BuildRequires:	automake >= 1:1.7
+BuildRequires:	gnutls-devel >= 2.8.0
+BuildRequires:	libgcrypt-devel >= 1.4.0
 BuildRequires:	libltdl-devel
-BuildRequires:	libtool
+BuildRequires:	libtool >= 2:2.0
 BuildRequires:	libxml2-devel >= 1:2.7.4
 BuildRequires:	libxslt-devel >= 1.0.20
-BuildRequires:	nspr-devel >= 4.0
-BuildRequires:	nss-devel >= 3.2
+BuildRequires:	nspr-devel >= 4.4.1
+BuildRequires:	nss-devel >= 3.9
 BuildRequires:	openssl-devel >= 0.9.7
-BuildRequires:	pkgconfig
+BuildRequires:	pkgconfig >= 1:0.9
 Requires:	libxml2 >= 1:2.7.4
 Requires:	libxslt >= 1.0.20
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -100,12 +101,54 @@ XMLSec library API documentation.
 %description apidocs -l pl.UTF-8
 Dokumentacja API biblioteki XMLSec.
 
+%package gcrypt
+Summary:	GCrypt Crypto library for XML Security Library
+Summary(pl.UTF-8):	Biblioteka kryptograficzna GCrypt dla biblioteki XMLSec
+Group:		Libraries
+Requires:	%{name} = %{version}-%{release}
+Requires:	libgcrypt >= 1.4.0
+
+%description gcrypt
+GCrypt Crypto library for XML Security Library provides GnuTLS based
+crypto services for the XMLSec library.
+
+%description gcrypt -l pl.UTF-8
+Biblioteka kryptograficzna GCrypt dla biblioteki XMLSec dostarcza
+usługi kryptograficzne oparte na bibliotece GnuTLS.
+
+%package gcrypt-devel
+Summary:	Header files for XMLSec GCrypt API
+Summary(pl.UTF-8):	Pliki nagłówkowe API GCrypt XMLSec
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-gcrypt = %{version}-%{release}
+Requires:	libgcrypt-devel >= 1.4.0
+
+%description gcrypt-devel
+Header files for developing XML Security applications with GCrypt.
+
+%description gcrypt-devel -l pl.UTF-8
+Pliki nagłówkowe do tworzenia aplikacji związanych z bezpieczeństwem
+XML przy użyciu GCrypt.
+
+%package gcrypt-static
+Summary:	Static GCrypt Crypto library for XML Security Library
+Summary(pl.UTF-8):	Statyczna biblioteka kryptograficzna GCrypt dla biblioteki XMLSec
+Group:		Development/Libraries
+Requires:	%{name}-gcrypt-devel = %{version}-%{release}
+
+%description gcrypt-static
+Static GCrypt Crypto library for XML Security Library.
+
+%description gcrypt-static -l pl.UTF-8
+Statyczna biblioteka kryptograficzna GCrypt dla biblioteki XMLSec.
+
 %package gnutls
 Summary:	GnuTLS Crypto library for XML Security Library
 Summary(pl.UTF-8):	Biblioteka kryptograficzna GnuTLS dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	gnutls >= 1.0.0
+Requires:	gnutls >= 2.8.0
 
 %description gnutls
 GnuTLS Crypto library for XML Security Library provides GnuTLS based
@@ -121,7 +164,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe API GnuTLS XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-gnutls = %{version}-%{release}
-Requires:	gnutls-devel >= 1.0.0
+Requires:	gnutls-devel >= 2.8.0
 
 %description gnutls-devel
 Header files for developing XML Security applications with GnuTLS.
@@ -147,8 +190,8 @@ Summary:	NSS Crypto library for XML Security Library
 Summary(pl.UTF-8):	Biblioteka kryptograficzna NSS dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	nspr >= 4.0
-Requires:	nss >= 3.2
+Requires:	nspr >= 4.4.1
+Requires:	nss >= 3.9
 
 %description nss
 NSS Crypto library for XML Security Library provides NSS based crypto
@@ -164,8 +207,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe API NSS XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-nss = %{version}-%{release}
-Requires:	nspr-devel >= 4.0
-Requires:	nss-devel >= 3.2
+Requires:	nspr-devel >= 4.4.1
+Requires:	nss-devel >= 3.9
 
 %description nss-devel
 Header files for developing XML Security applications with NSS.
@@ -296,6 +339,22 @@ rm -rf $RPM_BUILD_ROOT
 %files apidocs
 %defattr(644,root,root,755)
 %{_gtkdocdir}/xmlsec1
+
+%files gcrypt
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_libdir}/libxmlsec1-gcrypt.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libxmlsec1-gcrypt.so.1
+%attr(755,root,root) %{_libdir}/libxmlsec1-gcrypt.so
+
+%files gcrypt-devel
+%defattr(644,root,root,755)
+%{_libdir}/libxmlsec1-gcrypt.la
+%{_includedir}/xmlsec1/xmlsec/gcrypt
+%{_pkgconfigdir}/xmlsec1-gcrypt.pc
+
+%files gcrypt-static
+%defattr(644,root,root,755)
+%{_libdir}/libxmlsec1-gcrypt.a
 
 %files gnutls
 %defattr(644,root,root,755)
