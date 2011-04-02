@@ -1,12 +1,12 @@
 Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
-Version:	1.2.16
-Release:	2
+Version:	1.2.17
+Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
-# Source0-md5:	17e8eb9a4ec4139b7689d139be4da133
+# Source0-md5:	d37daeccb841e5a457b9476d613a6012
 Patch0:		%{name}-nss.patch
 URL:		http://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.53
@@ -19,7 +19,7 @@ BuildRequires:	libxml2-devel >= 1:2.7.4
 BuildRequires:	libxslt-devel >= 1.0.20
 BuildRequires:	nspr-devel >= 4.4.1
 BuildRequires:	nss-devel >= 3.9
-BuildRequires:	openssl-devel >= 0.9.7
+BuildRequires:	openssl-devel >= 0.9.8
 BuildRequires:	pkgconfig >= 1:0.9
 Requires:	libxml2 >= 1:2.7.4
 Requires:	libxslt >= 1.0.20
@@ -234,7 +234,7 @@ Summary:	OpenSSL Crypto library for XML Security Library
 Summary(pl.UTF-8):	Biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	openssl >= 0.9.7
+Requires:	openssl >= 0.9.8
 
 %description openssl
 OpenSSL Crypto library for XML Security Library provides OpenSSL based
@@ -250,7 +250,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe API OpenSSL XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-openssl = %{version}-%{release}
-Requires:	openssl-devel >= 0.9.7
+Requires:	openssl-devel >= 0.9.8
 
 %description openssl-devel
 Header files for developing XML Security applications with OpenSSL.
