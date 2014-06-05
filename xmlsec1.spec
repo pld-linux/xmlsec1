@@ -1,12 +1,12 @@
 Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
-Version:	1.2.19
-Release:	2
+Version:	1.2.20
+Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
-# Source0-md5:	fe664ba5f01ebfaeb0ab5deeb0b2249e
+# Source0-md5:	ce12af00283eb90d9281956524250d6e
 Patch0:		%{name}-nss.patch
 URL:		http://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.53
@@ -283,6 +283,7 @@ Statyczna biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec.
 %{__automake}
 %configure \
 	CPPFLAGS='%{rpmcppflags} -DLTDL_OBJDIR=\".libs\" -DLTDL_SHLIB_EXT=\".so\"' \
+	--disable-silent-rules \
 	--with-html-dir=%{_gtkdocdir}/xmlsec1 \
 	--with-nspr=/usr \
 	--with-nss=/usr
