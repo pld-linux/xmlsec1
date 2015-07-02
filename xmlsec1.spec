@@ -2,7 +2,7 @@ Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
 Version:	1.2.20
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries
 Source0:	http://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
@@ -94,6 +94,9 @@ Summary:	XMLSec library API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki XMLSec
 Group:		Documentation
 Requires:	gtk-doc-common
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 XMLSec library API documentation.
