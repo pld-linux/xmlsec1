@@ -1,6 +1,6 @@
---- xmlsec1-1.2.6/configure.in.orig	2004-08-26 04:49:24.000000000 +0200
-+++ xmlsec1-1.2.6/configure.in	2004-10-31 00:56:57.447586088 +0200
-@@ -553,16 +553,11 @@
+--- xmlsec1-1.2.22/configure.ac.orig	2016-04-20 18:26:22.000000000 +0200
++++ xmlsec1-1.2.22/configure.ac	2016-05-16 19:03:57.729094153 +0200
+@@ -683,16 +683,11 @@
  	fi
  	NSPR_INCLUDES_FOUND="yes"
  	NSPR_LIBS_FOUND="yes"
@@ -19,7 +19,16 @@
  		NSPR_INCLUDES_FOUND="yes"
  		NSPR_PRINIT_H="$dir/nspr/prinit.h"
      		break
-@@ -624,16 +619,11 @@
+@@ -746,7 +741,7 @@
+     NSS_NSS_H=""
+ 
+     if test "z$with_nss" != "z" ; then
+-	NSS_CFLAGS="$NSS_CFLAGS -I$with_nss/include -I$with_nss/include/nss"
++	NSS_CFLAGS="$NSS_CFLAGS -I$with_nss/include -I$with_nss/include/nss -I/usr/include/nspr"
+ 	if test "z$with_gnu_ld" = "zyes" ; then
+ 	    NSS_LIBS="$NSS_LIBS -Wl,-rpath-link -Wl,$with_nss/lib -L$with_nss/lib $NSS_LIBS_LIST"
+         else
+@@ -754,16 +749,11 @@
          fi
  	NSS_INCLUDES_FOUND="yes"
  	NSS_LIBS_FOUND="yes"
@@ -38,14 +47,3 @@
      		NSS_INCLUDES_FOUND="yes"
      		NSS_NSS_H="$dir/nss/nss.h"
      		break
---- xmlsec1-1.2.14/configure.in~	2010-04-26 09:58:24.901946082 +0200
-+++ xmlsec1-1.2.14/configure.in	2010-04-26 10:01:17.278214712 +0200
-@@ -689,7 +689,7 @@
-     NSS_NSS_H=""
- 
-     if test "z$with_nss" != "z" ; then
--	NSS_CFLAGS="$NSS_CFLAGS -I$with_nss/include -I$with_nss/include/nss"
-+	NSS_CFLAGS="$NSS_CFLAGS -I$with_nss/include -I$with_nss/include/nss -I/usr/include/nspr"
- 	if test "z$with_gnu_ld" = "zyes" ; then
- 	    NSS_LIBS="$NSS_LIBS -Wl,-rpath-link -Wl,$with_nss/lib -L$with_nss/lib $NSS_LIBS_LIST"
-         else
