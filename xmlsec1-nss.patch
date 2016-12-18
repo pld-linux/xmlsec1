@@ -1,7 +1,15 @@
---- xmlsec1-1.2.22/configure.ac.orig	2016-04-20 18:26:22.000000000 +0200
-+++ xmlsec1-1.2.22/configure.ac	2016-05-16 19:03:57.729094153 +0200
-@@ -683,16 +683,11 @@
- 	fi
+--- xmlsec1-1.2.23/configure.ac.orig	2016-10-17 00:48:17.000000000 +0200
++++ xmlsec1-1.2.23/configure.ac	2016-12-18 21:51:03.254443658 +0100
+@@ -673,23 +673,14 @@
+     if test "z$with_nspr" != "z" ; then
+ 	NSPR_PREFIX="$with_nspr"
+ 	NSPR_CFLAGS="-I$with_nspr/include -I$with_nspr/include/nspr"
+-	if test "z$with_gnu_ld" = "zyes" ; then
+-	    NSPR_LIBS="-Wl,-rpath-link -Wl,$with_nspr/lib -L$with_nspr/lib $NSPR_LIBS_LIST"
+-	else
+-	    NSPR_LIBS="-L$with_nspr/lib $NSPR_LIBS_LIST"
+-	fi
++	    NSPR_LIBS="$NSPR_LIBS_LIST"
  	NSPR_INCLUDES_FOUND="yes"
  	NSPR_LIBS_FOUND="yes"
 -	NSPR_PRINIT_H="$with_nspr/include/prinit.h"
@@ -19,17 +27,35 @@
  		NSPR_INCLUDES_FOUND="yes"
  		NSPR_PRINIT_H="$dir/nspr/prinit.h"
      		break
-@@ -746,7 +741,7 @@
+@@ -698,16 +689,7 @@
+ 	
+ 	for dir in $ac_nss_lib_dir ; do
+     	    if test -f $dir/libnspr4$shrext ; then
+-		dnl do not add -L/usr/lib because compiler does it anyway
+-        	if test "z$dir" = "z/usr/lib" ; then
+             	    NSPR_LIBS="$NSPR_LIBS_LIST"
+-    		else
+-    		    if test "z$with_gnu_ld" = "zyes" ; then
+-    			NSPR_LIBS="-Wl,-rpath-link -Wl,$dir -L$dir $NSPR_LIBS_LIST"
+-    		    else
+-    			NSPR_LIBS="-L$dir $NSPR_LIBS_LIST"
+-		    fi
+-		fi
+ 		NSPR_LIBS_FOUND="yes"
+ 		break
+ 	    fi
+@@ -743,24 +725,15 @@
      NSS_NSS_H=""
  
      if test "z$with_nss" != "z" ; then
 -	NSS_CFLAGS="$NSS_CFLAGS -I$with_nss/include -I$with_nss/include/nss"
+-	if test "z$with_gnu_ld" = "zyes" ; then
+-	    NSS_LIBS="$NSS_LIBS -Wl,-rpath-link -Wl,$with_nss/lib -L$with_nss/lib $NSS_LIBS_LIST"
+-        else
+-	    NSS_LIBS="$NSS_LIBS -L$with_nss/lib $NSS_LIBS_LIST"
+-        fi
 +	NSS_CFLAGS="$NSS_CFLAGS -I$with_nss/include -I$with_nss/include/nss -I/usr/include/nspr"
- 	if test "z$with_gnu_ld" = "zyes" ; then
- 	    NSS_LIBS="$NSS_LIBS -Wl,-rpath-link -Wl,$with_nss/lib -L$with_nss/lib $NSS_LIBS_LIST"
-         else
-@@ -754,16 +749,11 @@
-         fi
++	    NSS_LIBS="$NSS_LIBS $NSS_LIBS_LIST"
  	NSS_INCLUDES_FOUND="yes"
  	NSS_LIBS_FOUND="yes"
 -	NSS_NSS_H="$with_nss/include/nss.h"
@@ -47,3 +73,28 @@
      		NSS_INCLUDES_FOUND="yes"
      		NSS_NSS_H="$dir/nss/nss.h"
      		break
+@@ -770,15 +743,7 @@
+         for dir in $ac_nss_lib_dir ; do
+     	    if test -f $dir/libnss3$shrext ; then
+         	dnl do not add -L/usr/lib because compiler does it anyway
+-    		if test "z$dir" = "z/usr/lib" ; then
+         	    NSS_LIBS="$NSS_LIBS_LIST"
+-                else
+-            	    if test "z$with_gnu_ld" = "zyes" ; then
+-    			NSS_LIBS="-Wl,-rpath-link -Wl,$dir -L$dir $NSS_LIBS_LIST"
+-            	    else
+-        		NSS_LIBS="-L$dir $NSS_LIBS_LIST"
+-		    fi
+-		fi
+     		NSS_LIBS_FOUND="yes"
+     		break
+ 	    fi
+@@ -940,7 +905,7 @@
+     SAVE_LDFLAGS="$LDFLAGS"
+     if test "z$with_gnutls" != "z" -a "z$with_gnutls" != "zno" ; then
+         GNUTLS_CFLAGS="-I$with_gnutls/include"
+-        GNUTLS_LIBS="-L$with_gnutls/lib -lgnutls"
++        GNUTLS_LIBS="-lgnutls"
+         CFLAGS="$GNUTLS_CFLAGS $CFLAGS"
+         LDFLAGS="$GNUTLS_LIBS $LDFLAGS"
+     fi
