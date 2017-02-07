@@ -2,7 +2,7 @@ Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
 Version:	1.2.23
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries
 Source0:	https://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
@@ -151,7 +151,7 @@ Statyczna biblioteka kryptograficzna GCrypt dla biblioteki XMLSec.
 Summary:	GnuTLS Crypto library for XML Security Library
 Summary(pl.UTF-8):	Biblioteka kryptograficzna GnuTLS dla biblioteki XMLSec
 Group:		Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}-gcrypt = %{version}-%{release}
 Requires:	gnutls >= 2.8.0
 
 %description gnutls
@@ -166,7 +166,7 @@ usługi kryptograficzne oparte na bibliotece GnuTLS.
 Summary:	Header files for XMLSec GnuTLS API
 Summary(pl.UTF-8):	Pliki nagłówkowe API GnuTLS XMLSec
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
+Requires:	%{name}-gcrypt-devel = %{version}-%{release}
 Requires:	%{name}-gnutls = %{version}-%{release}
 Requires:	gnutls-devel >= 2.8.0
 
