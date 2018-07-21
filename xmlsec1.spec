@@ -1,12 +1,12 @@
 Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
-Version:	1.2.25
+Version:	1.2.26
 Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	https://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
-# Source0-md5:	dbbef1efc69e61bc4629650205a05b41
+# Source0-md5:	9c4aaf9ff615a73921b9e3bf4988d878
 Patch0:		%{name}-nss.patch
 URL:		https://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.53
@@ -19,7 +19,7 @@ BuildRequires:	libtool >= 2:2.0
 BuildRequires:	libxml2-devel >= 1:2.7.4
 BuildRequires:	libxslt-devel >= 1.0.20
 BuildRequires:	nspr-devel >= 4.4.1
-BuildRequires:	nss-devel >= 3.9
+BuildRequires:	nss-devel >= 3.11.1
 BuildRequires:	openssl-devel >= 1.0.0
 BuildRequires:	pkgconfig >= 1:0.9
 Requires:	libxml2 >= 1:2.7.4
@@ -195,7 +195,7 @@ Summary(pl.UTF-8):	Biblioteka kryptograficzna NSS dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	nspr >= 4.4.1
-Requires:	nss >= 3.9
+Requires:	nss >= 3.11.1
 
 %description nss
 NSS Crypto library for XML Security Library provides NSS based crypto
@@ -212,7 +212,7 @@ Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-nss = %{version}-%{release}
 Requires:	nspr-devel >= 4.4.1
-Requires:	nss-devel >= 3.9
+Requires:	nss-devel >= 3.11.1
 
 %description nss-devel
 Header files for developing XML Security applications with NSS.
