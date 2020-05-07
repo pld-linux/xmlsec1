@@ -1,12 +1,12 @@
 Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
-Version:	1.2.29
+Version:	1.2.30
 Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	https://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
-# Source0-md5:	4755621ff2a7150e208de6bd7decca10
+# Source0-md5:	b66ec21e0a0ac331afb4b1bc5c9ef966
 Patch0:		%{name}-nss.patch
 URL:		https://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.53
