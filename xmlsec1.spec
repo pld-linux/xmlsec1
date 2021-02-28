@@ -95,9 +95,7 @@ Summary:	XMLSec library API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki XMLSec
 Group:		Documentation
 Requires:	gtk-doc-common
-%if "%{_rpmversion}" >= "5"
 BuildArch:	noarch
-%endif
 
 %description apidocs
 XMLSec library API documentation.
