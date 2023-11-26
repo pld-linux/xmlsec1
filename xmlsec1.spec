@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	static_libs		# static libraries
+
 Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
@@ -24,6 +28,7 @@ BuildRequires:	nss-devel >= 3.11.1
 BuildRequires:	openssl-devel >= 1.1.0
 BuildRequires:	pkgconfig >= 1:0.9
 BuildRequires:	rpm-build >= 4.6
+BuildRequires:	rpmbuild(macros) >= 1.527
 Requires:	libxml2 >= 1:2.8.0
 Requires:	libxslt >= 1.0.20
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -291,6 +296,7 @@ Statyczna biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec.
 %configure \
 	CPPFLAGS='%{rpmcppflags} -DLTDL_OBJDIR=\".libs\" -DLTDL_SHLIB_EXT=\".so\"' \
 	--disable-silent-rules \
+	%{__enable_disable static_libs static} \
 	--with-html-dir=%{_gtkdocdir}/xmlsec1 \
 	--with-nspr=/usr \
 	--with-nss=/usr
@@ -342,9 +348,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_aclocaldir}/xmlsec1.m4
 %{_mandir}/man1/xmlsec1-config.1*
 
+%if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1.a
+%endif
 
 %files apidocs
 %defattr(644,root,root,755)
@@ -362,9 +370,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/xmlsec1/xmlsec/gcrypt
 %{_pkgconfigdir}/xmlsec1-gcrypt.pc
 
+%if %{with static_libs}
 %files gcrypt-static
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-gcrypt.a
+%endif
 
 %files gnutls
 %defattr(644,root,root,755)
@@ -378,9 +388,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/xmlsec1/xmlsec/gnutls
 %{_pkgconfigdir}/xmlsec1-gnutls.pc
 
+%if %{with static_libs}
 %files gnutls-static
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-gnutls.a
+%endif
 
 %files nss
 %defattr(644,root,root,755)
@@ -394,9 +406,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/xmlsec1/xmlsec/nss
 %{_pkgconfigdir}/xmlsec1-nss.pc
 
+%if %{with static_libs}
 %files nss-static
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-nss.a
+%endif
 
 %files openssl
 %defattr(644,root,root,755)
@@ -410,6 +424,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/xmlsec1/xmlsec/openssl
 %{_pkgconfigdir}/xmlsec1-openssl.pc
 
+%if %{with static_libs}
 %files openssl-static
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-openssl.a
+%endif
