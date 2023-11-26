@@ -308,6 +308,9 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
+%post	gcrypt -p /sbin/ldconfig
+%postun	gcrypt -p /sbin/ldconfig
+
 %post	gnutls -p /sbin/ldconfig
 %postun	gnutls -p /sbin/ldconfig
 
