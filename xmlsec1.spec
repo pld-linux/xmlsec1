@@ -8,6 +8,7 @@ Group:		Libraries
 Source0:	https://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
 # Source0-md5:	98dd3c884e2816c25c038a6e8af138fb
 Patch0:		%{name}-nss.patch
+Patch1:		missing-includes.patch
 URL:		https://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake >= 1:1.7
@@ -277,6 +278,7 @@ Statyczna biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %{__sed} -i -e '/\/lib\/[^ ]*_MARKER/ s,/lib/,/%{_lib}/,' configure.ac
 

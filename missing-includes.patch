@@ -1,0 +1,40 @@
+--- xmlsec1-1.2.37/src/buffer.c.orig	2022-11-28 22:40:24.000000000 +0100
++++ xmlsec1-1.2.37/src/buffer.c	2023-11-26 14:19:14.291171485 +0100
+@@ -21,6 +21,7 @@
+ #include <ctype.h>
+ 
+ #include <libxml/tree.h>
++#include <libxml/xmlIO.h>
+ 
+ #include <xmlsec/xmlsec.h>
+ #include <xmlsec/xmltree.h>
+--- xmlsec1-1.2.37/src/relationship.c.orig	2022-11-28 22:40:24.000000000 +0100
++++ xmlsec1-1.2.37/src/relationship.c	2023-11-26 14:21:12.200917041 +0100
+@@ -78,6 +78,7 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++#include <libxml/list.h>
+ #include <libxml/tree.h>
+ #include <libxml/xpointer.h>
+ #include <libxml/c14n.h>
+--- xmlsec1-1.2.37/src/xmlsec.c.orig	2022-11-28 22:40:24.000000000 +0100
++++ xmlsec1-1.2.37/src/xmlsec.c	2023-11-26 14:22:42.454844716 +0100
+@@ -20,6 +20,7 @@
+ #include <stdio.h>
+ #include <string.h>
+ 
++#include <libxml/parser.h>
+ #include <libxml/tree.h>
+ 
+ #include <xmlsec/xmlsec.h>
+--- xmlsec1-1.2.37/apps/xmlsec.c.orig	2022-11-28 22:40:24.000000000 +0100
++++ xmlsec1-1.2.37/apps/xmlsec.c	2023-11-26 14:26:32.801209168 +0100
+@@ -15,6 +15,7 @@
+ 
+ #include <libxml/tree.h>
+ #include <libxml/xmlmemory.h>
++#include <libxml/xmlsave.h>
+ #include <libxml/parser.h>
+ #include <libxml/xpath.h>
+ #include <libxml/xpathInternals.h>
