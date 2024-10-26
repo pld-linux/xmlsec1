@@ -1,31 +1,30 @@
 #
 # Conditional build:
-%bcond_without	static_libs		# static libraries
+%bcond_without	static_libs	# static libraries
 
 Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
-Version:	1.2.37
-Release:	2
+Version:	1.3.6
+Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	https://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
-# Source0-md5:	98dd3c884e2816c25c038a6e8af138fb
+# Source0-md5:	f56d7fb32e3ec84305d2c1ffd6c2f466
 Patch0:		%{name}-nss.patch
-Patch1:		missing-includes.patch
 URL:		https://www.aleksey.com/xmlsec/
-BuildRequires:	autoconf >= 2.53
+BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.7
-BuildRequires:	gnutls-devel >= 2.8.0
+BuildRequires:	gnutls-devel >= 3.6.13
 BuildRequires:	help2man
 BuildRequires:	libgcrypt-devel >= 1.4.0
 BuildRequires:	libltdl-devel >= 2:2.0
 BuildRequires:	libtool >= 2:2.0
 BuildRequires:	libxml2-devel >= 1:2.8.0
 BuildRequires:	libxslt-devel >= 1.0.20
-BuildRequires:	nspr-devel >= 4.4.1
-BuildRequires:	nss-devel >= 3.11.1
-BuildRequires:	openssl-devel >= 1.1.0
+BuildRequires:	nspr-devel >= 1:4.18
+BuildRequires:	nss-devel >= 1:3.35
+BuildRequires:	openssl-devel >= 1.1.1
 BuildRequires:	pkgconfig >= 1:0.9
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.527
@@ -157,7 +156,7 @@ Summary:	GnuTLS Crypto library for XML Security Library
 Summary(pl.UTF-8):	Biblioteka kryptograficzna GnuTLS dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name}-gcrypt = %{version}-%{release}
-Requires:	gnutls >= 2.8.0
+Requires:	gnutls >= 3.6.13
 
 %description gnutls
 GnuTLS Crypto library for XML Security Library provides GnuTLS based
@@ -173,7 +172,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe API GnuTLS XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-gcrypt-devel = %{version}-%{release}
 Requires:	%{name}-gnutls = %{version}-%{release}
-Requires:	gnutls-devel >= 2.8.0
+Requires:	gnutls-devel >= 3.6.13
 
 %description gnutls-devel
 Header files for developing XML Security applications with GnuTLS.
@@ -199,8 +198,8 @@ Summary:	NSS Crypto library for XML Security Library
 Summary(pl.UTF-8):	Biblioteka kryptograficzna NSS dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	nspr >= 4.4.1
-Requires:	nss >= 3.11.1
+Requires:	nspr >= 1:4.18
+Requires:	nss >= 1:3.35
 
 %description nss
 NSS Crypto library for XML Security Library provides NSS based crypto
@@ -216,8 +215,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe API NSS XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-nss = %{version}-%{release}
-Requires:	nspr-devel >= 4.4.1
-Requires:	nss-devel >= 3.11.1
+Requires:	nspr-devel >= 1:4.18
+Requires:	nss-devel >= 1:3.35
 
 %description nss-devel
 Header files for developing XML Security applications with NSS.
@@ -243,7 +242,7 @@ Summary:	OpenSSL Crypto library for XML Security Library
 Summary(pl.UTF-8):	Biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	openssl >= 1.1.0
+Requires:	openssl >= 1.1.1
 
 %description openssl
 OpenSSL Crypto library for XML Security Library provides OpenSSL based
@@ -259,7 +258,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe API OpenSSL XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-openssl = %{version}-%{release}
-Requires:	openssl-devel >= 1.1.0
+Requires:	openssl-devel >= 1.1.1
 
 %description openssl-devel
 Header files for developing XML Security applications with OpenSSL.
@@ -283,7 +282,6 @@ Statyczna biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 
 %{__sed} -i -e '/\/lib\/[^ ]*_MARKER/ s,/lib/,/%{_lib}/,' configure.ac
 
@@ -295,6 +293,7 @@ Statyczna biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec.
 %{__automake}
 %configure \
 	CPPFLAGS='%{rpmcppflags} -DLTDL_OBJDIR=\".libs\" -DLTDL_SHLIB_EXT=\".so\"' \
+	--enable-md5 \
 	--disable-silent-rules \
 	%{__enable_disable static_libs static} \
 	--with-html-dir=%{_gtkdocdir}/xmlsec1 \

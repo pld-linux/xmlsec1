@@ -1,25 +1,25 @@
---- xmlsec1-1.2.26/configure.ac.orig	2018-07-21 18:15:24.743837556 +0200
-+++ xmlsec1-1.2.26/configure.ac	2018-07-21 18:46:07.437149856 +0200
-@@ -1052,10 +1052,7 @@
+--- xmlsec1-1.3.6/configure.ac.orig	2024-10-26 15:01:36.309079752 +0200
++++ xmlsec1-1.3.6/configure.ac	2024-10-26 15:06:02.074306644 +0200
+@@ -1103,10 +1103,7 @@ if test "z$NSPR_FOUND" = "zyes" -a "z$NS
      NSPR_CFLAGS="$NSPR_CFLAGS -I$NSPR_INCLUDE_PATH -I$NSPR_INCLUDE_PATH/nspr"
  fi
  if test "z$NSPR_FOUND" = "zyes" -a "z$NSPR_LIB_PATH" != "z" ; then
 -    if test "z$with_gnu_ld" = "zyes" ; then
 -        NSPR_LIBS="$NSPR_LIBS -Wl,-rpath-link -Wl,$NSPR_LIB_PATH"
 -    fi
--    NSPR_LIBS="$NSPR_LIBS -L$NSPR_LIB_PATH/lib $NSPR_LIBS_LIST"
+-    NSPR_LIBS="$NSPR_LIBS -L$NSPR_LIB_PATH $NSPR_LIBS_LIST"
 +    NSPR_LIBS="$NSPR_LIBS $NSPR_LIBS_LIST"
  fi
  
  dnl Priority 5 (NSS): Just try to compile/link and hope for the best
-@@ -1089,10 +1086,7 @@
+@@ -1140,10 +1137,7 @@ if test "z$NSS_FOUND" = "zyes" -a "z$NSS
      NSS_CFLAGS="$NSS_CFLAGS -I$NSS_INCLUDE_PATH -I$NSS_INCLUDE_PATH/nss"
  fi
  if test "z$NSS_FOUND" = "zyes" -a "z$NSS_LIB_PATH" != "z" ; then
 -    if test "z$with_gnu_ld" = "zyes" ; then
 -        NSS_LIBS="$NSS_LIBS -Wl,-rpath-link -Wl,$NSS_LIB_PATH"
 -    fi
--    NSS_LIBS="$NSS_LIBS -L$NSS_LIB_PATH/lib $NSS_LIBS_LIST"
+-    NSS_LIBS="$NSS_LIBS -L$NSS_LIB_PATH $NSS_LIBS_LIST"
 +    NSS_LIBS="$NSS_LIBS $NSS_LIBS_LIST"
  fi
  
