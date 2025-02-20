@@ -281,7 +281,7 @@ Statyczna biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 
 %{__sed} -i -e '/\/lib\/[^ ]*_MARKER/ s,/lib/,/%{_lib}/,' configure.ac
 
