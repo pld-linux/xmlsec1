@@ -6,7 +6,7 @@ Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
 Version:	1.3.7
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries
 Source0:	https://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
@@ -295,6 +295,7 @@ Statyczna biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec.
 	CPPFLAGS='%{rpmcppflags} -DLTDL_OBJDIR=\".libs\" -DLTDL_SHLIB_EXT=\".so\"' \
 	--enable-md5 \
 	--enable-ripemd160 \
+	--disable-pedantic \
 	--disable-silent-rules \
 	%{__enable_disable static_libs static} \
 	--with-gcrypt \
