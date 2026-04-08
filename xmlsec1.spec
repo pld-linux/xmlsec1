@@ -5,31 +5,31 @@
 Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
-Version:	1.3.7
-Release:	3
+Version:	1.3.10
+Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	https://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
-# Source0-md5:	241511d6e829f4a1c799e5046f679e74
+# Source0-md5:	7ba7406037ca2e616611a6904e23a848
 Patch0:		%{name}-nss.patch
 URL:		https://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.7
-BuildRequires:	gnutls-devel >= 3.6.13
+BuildRequires:	gnutls-devel >= 3.8.3
 BuildRequires:	help2man
 BuildRequires:	libgcrypt-devel >= 1.4.0
 BuildRequires:	libltdl-devel >= 2:2.0
 BuildRequires:	libtool >= 2:2.0
-BuildRequires:	libxml2-devel >= 1:2.8.0
-BuildRequires:	libxslt-devel >= 1.0.20
-BuildRequires:	nspr-devel >= 1:4.18
-BuildRequires:	nss-devel >= 1:3.35
-BuildRequires:	openssl-devel >= 1.1.1
+BuildRequires:	libxml2-devel >= 1:2.9.13
+BuildRequires:	libxslt-devel >= 1.1.35
+BuildRequires:	nspr-devel >= 1:4.34.1
+BuildRequires:	nss-devel >= 1:3.91
+BuildRequires:	openssl-devel >= 3.0.13
 BuildRequires:	pkgconfig >= 1:0.9
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.527
-Requires:	libxml2 >= 1:2.8.0
-Requires:	libxslt >= 1.0.20
+Requires:	libxml2 >= 1:2.9.13
+Requires:	libxslt >= 1.1.35
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -75,8 +75,8 @@ Summary:	Header files for XMLSec library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki XMLSec
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libxml2-devel >= 1:2.8.0
-Requires:	libxslt-devel >= 1.0.20
+Requires:	libxml2-devel >= 1:2.9.13
+Requires:	libxslt-devel >= 1.1.35
 
 %description devel
 Header files for XMLSec library.
@@ -156,7 +156,7 @@ Summary:	GnuTLS Crypto library for XML Security Library
 Summary(pl.UTF-8):	Biblioteka kryptograficzna GnuTLS dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name}-gcrypt = %{version}-%{release}
-Requires:	gnutls >= 3.6.13
+Requires:	gnutls >= 3.8.3
 
 %description gnutls
 GnuTLS Crypto library for XML Security Library provides GnuTLS based
@@ -172,7 +172,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe API GnuTLS XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-gcrypt-devel = %{version}-%{release}
 Requires:	%{name}-gnutls = %{version}-%{release}
-Requires:	gnutls-devel >= 3.6.13
+Requires:	gnutls-devel >= 3.8.3
 
 %description gnutls-devel
 Header files for developing XML Security applications with GnuTLS.
@@ -198,8 +198,8 @@ Summary:	NSS Crypto library for XML Security Library
 Summary(pl.UTF-8):	Biblioteka kryptograficzna NSS dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	nspr >= 1:4.18
-Requires:	nss >= 1:3.35
+Requires:	nspr >= 1:4.34.1
+Requires:	nss >= 1:3.91
 
 %description nss
 NSS Crypto library for XML Security Library provides NSS based crypto
@@ -215,8 +215,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe API NSS XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-nss = %{version}-%{release}
-Requires:	nspr-devel >= 1:4.18
-Requires:	nss-devel >= 1:3.35
+Requires:	nspr-devel >= 1:4.34.1
+Requires:	nss-devel >= 1:3.91
 
 %description nss-devel
 Header files for developing XML Security applications with NSS.
@@ -242,7 +242,7 @@ Summary:	OpenSSL Crypto library for XML Security Library
 Summary(pl.UTF-8):	Biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec
 Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	openssl >= 1.1.1
+Requires:	openssl >= 3.0.13
 
 %description openssl
 OpenSSL Crypto library for XML Security Library provides OpenSSL based
@@ -258,7 +258,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe API OpenSSL XMLSec
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 Requires:	%{name}-openssl = %{version}-%{release}
-Requires:	openssl-devel >= 1.1.1
+Requires:	openssl-devel >= 3.0.13
 
 %description openssl-devel
 Header files for developing XML Security applications with OpenSSL.
@@ -287,7 +287,7 @@ Statyczna biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -309,6 +309,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# obsoleted by pkg-config for compile-time linking, lt_dlopenext falls back to .so when .la not found
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libxmlsec1*.la
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -332,16 +335,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog Copyright README.md TODO
 %attr(755,root,root) %{_bindir}/xmlsec1
-%attr(755,root,root) %{_libdir}/libxmlsec1.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libxmlsec1.so.1
+%{_libdir}/libxmlsec1.so.*.*.*
+%ghost %{_libdir}/libxmlsec1.so.10310
 %{_mandir}/man1/xmlsec1.1*
 
 %files devel
 %defattr(644,root,root,755)
 %doc HACKING
 %attr(755,root,root) %{_bindir}/xmlsec1-config
-%attr(755,root,root) %{_libdir}/libxmlsec1.so
-%{_libdir}/libxmlsec1.la
+%{_libdir}/libxmlsec1.so
 %{_libdir}/xmlsec1Conf.sh
 %dir %{_includedir}/xmlsec1
 %dir %{_includedir}/xmlsec1/xmlsec
@@ -362,13 +364,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files gcrypt
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libxmlsec1-gcrypt.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libxmlsec1-gcrypt.so.1
-%attr(755,root,root) %{_libdir}/libxmlsec1-gcrypt.so
+%{_libdir}/libxmlsec1-gcrypt.so.*.*.*
+%ghost %{_libdir}/libxmlsec1-gcrypt.so.10310
+%{_libdir}/libxmlsec1-gcrypt.so
 
 %files gcrypt-devel
 %defattr(644,root,root,755)
-%{_libdir}/libxmlsec1-gcrypt.la
 %{_includedir}/xmlsec1/xmlsec/gcrypt
 %{_pkgconfigdir}/xmlsec1-gcrypt.pc
 
@@ -380,13 +381,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files gnutls
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libxmlsec1-gnutls.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libxmlsec1-gnutls.so.1
-%attr(755,root,root) %{_libdir}/libxmlsec1-gnutls.so
+%{_libdir}/libxmlsec1-gnutls.so.*.*.*
+%ghost %{_libdir}/libxmlsec1-gnutls.so.10310
+%{_libdir}/libxmlsec1-gnutls.so
 
 %files gnutls-devel
 %defattr(644,root,root,755)
-%{_libdir}/libxmlsec1-gnutls.la
 %{_includedir}/xmlsec1/xmlsec/gnutls
 %{_pkgconfigdir}/xmlsec1-gnutls.pc
 
@@ -398,13 +398,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files nss
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libxmlsec1-nss.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libxmlsec1-nss.so.1
-%attr(755,root,root) %{_libdir}/libxmlsec1-nss.so
+%{_libdir}/libxmlsec1-nss.so.*.*.*
+%ghost %{_libdir}/libxmlsec1-nss.so.10310
+%{_libdir}/libxmlsec1-nss.so
 
 %files nss-devel
 %defattr(644,root,root,755)
-%{_libdir}/libxmlsec1-nss.la
 %{_includedir}/xmlsec1/xmlsec/nss
 %{_pkgconfigdir}/xmlsec1-nss.pc
 
@@ -416,13 +415,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files openssl
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libxmlsec1-openssl.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libxmlsec1-openssl.so.1
-%attr(755,root,root) %{_libdir}/libxmlsec1-openssl.so
+%{_libdir}/libxmlsec1-openssl.so.*.*.*
+%ghost %{_libdir}/libxmlsec1-openssl.so.10310
+%{_libdir}/libxmlsec1-openssl.so
 
 %files openssl-devel
 %defattr(644,root,root,755)
-%{_libdir}/libxmlsec1-openssl.la
 %{_includedir}/xmlsec1/xmlsec/openssl
 %{_pkgconfigdir}/xmlsec1-openssl.pc
 
