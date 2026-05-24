@@ -5,16 +5,17 @@
 Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
-Version:	1.3.10
+Version:	1.3.11
 Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	https://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
-# Source0-md5:	7ba7406037ca2e616611a6904e23a848
+# Source0-md5:	a1c37896e885861186817e07f60a7649
 Patch0:		%{name}-nss.patch
 URL:		https://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.7
+BuildRequires:	doxygen
 BuildRequires:	gnutls-devel >= 3.8.3
 BuildRequires:	help2man
 BuildRequires:	libgcrypt-devel >= 1.4.0
@@ -25,6 +26,7 @@ BuildRequires:	libxslt-devel >= 1.1.35
 BuildRequires:	nspr-devel >= 1:4.34.1
 BuildRequires:	nss-devel >= 1:3.91
 BuildRequires:	openssl-devel >= 3.0.13
+BuildRequires:	pandoc
 BuildRequires:	pkgconfig >= 1:0.9
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.527
@@ -100,7 +102,6 @@ Statyczna biblioteka XMLSec.
 Summary:	XMLSec library API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki XMLSec
 Group:		Documentation
-Requires:	gtk-doc-common
 BuildArch:	noarch
 
 %description apidocs
@@ -285,6 +286,8 @@ Statyczna biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec.
 
 %{__sed} -i -e '/\/lib\/[^ ]*_MARKER/ s,/lib/,/%{_lib}/,' configure.ac
 
+chmod 755 docs/xml/api/doxygen_filter.py
+
 %build
 %{__libtoolize}
 %{__aclocal} -I m4
@@ -302,7 +305,11 @@ Statyczna biblioteka kryptograficzna OpenSSL dla biblioteki XMLSec.
 	--with-html-dir=%{_gtkdocdir}/xmlsec1 \
 	--with-nspr=/usr \
 	--with-nss=/usr
+
 %{__make}
+
+# XML part fails with doxygen 1.8.10; package just md docs for now
+%{__make} -C docs/html docs
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -333,10 +340,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog Copyright README.md TODO
+%doc AUTHORS.md ChangeLog Copyright README.md TODO
 %attr(755,root,root) %{_bindir}/xmlsec1
 %{_libdir}/libxmlsec1.so.*.*.*
-%ghost %{_libdir}/libxmlsec1.so.10310
+%ghost %{_libdir}/libxmlsec1.so.10311
 %{_mandir}/man1/xmlsec1.1*
 
 %files devel
@@ -360,12 +367,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/xmlsec1
+%{_docdir}/xmlsec1
 
 %files gcrypt
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-gcrypt.so.*.*.*
-%ghost %{_libdir}/libxmlsec1-gcrypt.so.10310
+%ghost %{_libdir}/libxmlsec1-gcrypt.so.10311
 %{_libdir}/libxmlsec1-gcrypt.so
 
 %files gcrypt-devel
@@ -382,7 +389,7 @@ rm -rf $RPM_BUILD_ROOT
 %files gnutls
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-gnutls.so.*.*.*
-%ghost %{_libdir}/libxmlsec1-gnutls.so.10310
+%ghost %{_libdir}/libxmlsec1-gnutls.so.10311
 %{_libdir}/libxmlsec1-gnutls.so
 
 %files gnutls-devel
@@ -399,7 +406,7 @@ rm -rf $RPM_BUILD_ROOT
 %files nss
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-nss.so.*.*.*
-%ghost %{_libdir}/libxmlsec1-nss.so.10310
+%ghost %{_libdir}/libxmlsec1-nss.so.10311
 %{_libdir}/libxmlsec1-nss.so
 
 %files nss-devel
@@ -416,7 +423,7 @@ rm -rf $RPM_BUILD_ROOT
 %files openssl
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-openssl.so.*.*.*
-%ghost %{_libdir}/libxmlsec1-openssl.so.10310
+%ghost %{_libdir}/libxmlsec1-openssl.so.10311
 %{_libdir}/libxmlsec1-openssl.so
 
 %files openssl-devel
