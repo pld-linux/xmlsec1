@@ -5,12 +5,12 @@
 Summary:	XML Security Library
 Summary(pl.UTF-8):	Biblioteka bezpieczeństwa XML
 Name:		xmlsec1
-Version:	1.3.11
+Version:	1.3.12
 Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	https://www.aleksey.com/xmlsec/download/%{name}-%{version}.tar.gz
-# Source0-md5:	a1c37896e885861186817e07f60a7649
+# Source0-md5:	d5f31478d4d7bd782424a02239edb48d
 Patch0:		%{name}-nss.patch
 URL:		https://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.69
@@ -343,7 +343,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS.md ChangeLog Copyright README.md TODO
 %attr(755,root,root) %{_bindir}/xmlsec1
 %{_libdir}/libxmlsec1.so.*.*.*
-%ghost %{_libdir}/libxmlsec1.so.10311
+%ghost %{_libdir}/libxmlsec1.so.10312
 %{_mandir}/man1/xmlsec1.1*
 
 %files devel
@@ -372,7 +372,7 @@ rm -rf $RPM_BUILD_ROOT
 %files gcrypt
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-gcrypt.so.*.*.*
-%ghost %{_libdir}/libxmlsec1-gcrypt.so.10311
+%ghost %{_libdir}/libxmlsec1-gcrypt.so.10312
 %{_libdir}/libxmlsec1-gcrypt.so
 
 %files gcrypt-devel
@@ -389,7 +389,7 @@ rm -rf $RPM_BUILD_ROOT
 %files gnutls
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-gnutls.so.*.*.*
-%ghost %{_libdir}/libxmlsec1-gnutls.so.10311
+%ghost %{_libdir}/libxmlsec1-gnutls.so.10312
 %{_libdir}/libxmlsec1-gnutls.so
 
 %files gnutls-devel
@@ -406,7 +406,7 @@ rm -rf $RPM_BUILD_ROOT
 %files nss
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-nss.so.*.*.*
-%ghost %{_libdir}/libxmlsec1-nss.so.10311
+%ghost %{_libdir}/libxmlsec1-nss.so.10312
 %{_libdir}/libxmlsec1-nss.so
 
 %files nss-devel
@@ -423,7 +423,7 @@ rm -rf $RPM_BUILD_ROOT
 %files openssl
 %defattr(644,root,root,755)
 %{_libdir}/libxmlsec1-openssl.so.*.*.*
-%ghost %{_libdir}/libxmlsec1-openssl.so.10311
+%ghost %{_libdir}/libxmlsec1-openssl.so.10312
 %{_libdir}/libxmlsec1-openssl.so
 
 %files openssl-devel
