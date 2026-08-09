@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_without	apidocs		# API documentation
 %bcond_without	static_libs	# static libraries
 
 Summary:	XML Security Library
@@ -15,7 +16,7 @@ Patch0:		%{name}-nss.patch
 URL:		https://www.aleksey.com/xmlsec/
 BuildRequires:	autoconf >= 2.69
 BuildRequires:	automake >= 1:1.7
-BuildRequires:	doxygen
+%{?with_apidocs:BuildRequires:	doxygen}
 BuildRequires:	gnutls-devel >= 3.8.3
 BuildRequires:	help2man
 BuildRequires:	libgcrypt-devel >= 1.4.0
@@ -26,8 +27,12 @@ BuildRequires:	libxslt-devel >= 1.1.35
 BuildRequires:	nspr-devel >= 1:4.34.1
 BuildRequires:	nss-devel >= 1:3.91
 BuildRequires:	openssl-devel >= 3.0.13
-BuildRequires:	pandoc
+%{?with_apidocs:BuildRequires:	pandoc}
 BuildRequires:	pkgconfig >= 1:0.9
+%if %{with apidocs}
+BuildRequires:	python3
+BuildRequires:	python3-modules
+%endif
 BuildRequires:	rpm-build >= 4.6
 BuildRequires:	rpmbuild(macros) >= 1.527
 Requires:	libxml2 >= 1:2.9.13
@@ -309,7 +314,7 @@ chmod 755 docs/xml/api/doxygen_filter.py
 %{__make}
 
 # XML part fails with doxygen 1.8.10; package just md docs for now
-%{__make} -C docs/html docs
+%{?with_apidocs:%{__make} -C docs/html docs}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -365,9 +370,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libxmlsec1.a
 %endif
 
+%if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
 %{_docdir}/xmlsec1
+%endif
 
 %files gcrypt
 %defattr(644,root,root,755)
